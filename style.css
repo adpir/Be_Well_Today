@@ -16,7 +16,13 @@ body {
 
 h1 {
   text-align: center;
-  color: lightgreen;
+  color: rgba(6, 37, 25, 0.703);
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  font-size: 40px;
 }
 /* screen reader . this will be hidden unless the user is using a screen reader. if they are not using one the user will see a hamberger button 
 for my own reference if the position is relative the 'open main menu and the close main menu is visible but if I change it to absolute it will be hidden */
@@ -39,16 +45,17 @@ header {
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
+  background-color: white;
 }
 /* logo width 50% small the image and out it to the left side and move the ul il to the right */
 .logo {
   width: 100%;
-
-  /* border-radius: 50%; */
+  opacity: 50%;
+  height: 85vh;
+  clip-path: polygon(0 0, 100% 0%, 100% 64%, 0 100%, 0% 50%);
+  /* add image opacity border-radius: 50%; */
 }
-/* img {
-  background-size: 36px;
-} */
+
 /* this section give more width to the hamberger and the close button image */
 .hamburger img,
 .close img {
@@ -131,6 +138,10 @@ nav a:hover {
     */
   color: #ff7700;
 }
+/*
+some styling to make some effect to the navbar and to make it tilt a bit in the corner
+*/
+
 /* add media queries to desktop since it was made mobile responsive first - using logo it change the size to the pic when it reach to  min-width: 600px*/
 @media (min-width: 600px) {
   .logo {

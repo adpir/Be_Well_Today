@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be Well Today</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- add the image for the navigation bar -->
+    <header>
+        <!-- <section class="logo-box"> add a svg for the logo</section> -->
+        <img src="images/navbar-2.jpg" alt="Be Well today" class="logo" />
+        <h1>
+            Be Well Today
+        </h1>
+        <a class="hamburger" href="#navbar" aria-label="Open main menu">
+            <!-- add open menu bar with an image sr-only means screen reader only for accesibilidad  -->
+            <span class="sr-only">Open main menu</span>
+            <img src="images/icons8-menu.svg" alt="Navigation Button." aria-hidden="true">
+        </a>
+        <!-- add navbar on a list -->
+        <nav id="navbar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Me</a></li>
+                <li><a href="#">Articles</a></li>
+                <li><a href="#">Recipes</a></li>
+            </ul>
+            <!-- add close menu bar  with an image -->
+            <a class="close" href="#" aria-label="Close main menu">
+                <span class="sr-only">Close main menu</span>
+                <img src="images/icons8-delete.svg" aria-hidden="true" />
+            </a>
+        </nav>
+
+    </header>
+
+
+
+
+    <script src='./script.js'></script>
+</body>
+
+</html>
