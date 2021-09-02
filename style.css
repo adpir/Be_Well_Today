@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  font-family: 'Roboto Slab', serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  color: lightgreen;
+}
+/* screen reader . this will be hidden unless the user is using a screen reader. if they are not using one the user will see a hamberger button 
+for my own reference if the position is relative the 'open main menu and the close main menu is visible but if I change it to absolute it will be hidden */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+header {
+  /* margin 2rem da espacio en lado izq and top - change to 0*/
+  margin: 0;
+  /* display: flex da espacio en lado derecho */
+  display: flex;
+  /* flex-flow: row wrap remueve el espacio en lado derecho */
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+/* logo width 50% small the image and out it to the left side and move the ul il to the right */
+.logo {
+  width: 100%;
+
+  /* border-radius: 50%; */
+}
+/* img {
+  background-size: 36px;
+} */
+/* this section give more width to the hamberger and the close button image */
+.hamburger img,
+.close img {
+  width: 36px;
+  height: 36px;
+}
+.hamburger {
+  position: absolute;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  top: 0;
+  right: 0;
+}
+nav {
+  /*
+using padding : move the image and list menu to down a bit. 
+*/
+  padding: 1rem;
+  /* position: absolute move the content list to left where the image is located, and the right side is showing only the menu hamburger  */
+  position: absolute;
+  /* a higher z-index put navbar above hamburger */
+  z-index: 1000;
+  /* move list a bit top */
+  top: 0;
+  /* move list a bit to the left */
+  left: 0;
+  width: 100%;
+  /* adding the 100vh vh stands for viewport it will make sure to cover the screen to black for the close screen  */
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(57, 139, 79, 0.9);
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  /* animate slide up/down */
+  transform: translateY(-100%);
+  transition: transform 0.2s ease;
+}
+/* :target is called when its anchor id #navbar is called by clicking on the hamburger which has href="#navbar" => this make the hamburger and close to work. */
+nav:target {
+  transform: translateY(0);
+}
+nav ul {
+  /*
+  move the ul list that is inside of the navbar to the center;
+    */
+  flex-basis: 80%;
+  /*
+  list-style-type: none; remove the bullets
+    */
+  list-style-type: none;
+}
+nav a {
+  /*
+  padding: 1rem; provided some space between the list
+    */
+  display: block;
+  padding: 1rem;
+  /*
+  font-size: 1.5rem; provided a bigger size to the letters
+    */
+  font-size: 1.5rem;
+  /*
+  font-weight: 600; provided a bolder look to the letters
+    */
+  font-weight: 600;
+  /*
+  text-decoration: none; remove the underline to the letters
+    */
+  text-decoration: none;
+  /*
+ color: white; change color to white to the letters
+    */
+  color: white;
+}
+nav a:hover {
+  /*
+ using hover change the color to pink to the letters
+    */
+  color: #ff7700;
+}
+/* add media queries to desktop since it was made mobile responsive first - using logo it change the size to the pic when it reach to  min-width: 600px*/
+@media (min-width: 600px) {
+  .logo {
+    width: 35%;
+  }
+  nav {
+    position: static;
+    width: auto;
+    /*
+this make the slide to appear in the right of the screen 
+height: auto;
+    overflow: auto;
+    transform: none;
+    */
+    height: auto;
+    overflow: auto;
+    transform: none;
+    background-color: transparent;
+    display: block;
+  }
+  /*
+this make the hamburger and the close button to dissapear from the screen 
+    */
+  .hamburger,
+  .close {
+    display: none;
+  }
+  header {
+    /*
+this make margin: 2rem 0 0 0; the image move all the way to the left
+    */
+    margin: 2rem 0 0 0;
+    /*
+text was move to the center and using block it move the list to the left (the content is invisible just bullets is showing 
+    */
+    text-align: center;
+    display: block;
+  }
+  nav {
+    padding: 0;
+    margin: 0;
+  }
+  nav ul {
+    /*
+remove the bullets from the list
+    */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    /*
+margin-top: 2rem; move h1 a bit down
+    */
+    margin-top: 2rem;
+    /*
+ adding background-color: #f38600;
+    border-radius: 0rem; the navbar appear with the content
+    */
+    background-color: #f38600;
+    border-radius: 0rem;
+  }
+}
+@media (min-width: 1000px) {
+  header {
+    /*
+display: flex; move header navbar to the right 
+    */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  /*
+change the logo size to smaller and bit to the top
+    */
+  .logo {
+    width: 25%;
+  }
+  /*
+streght the header navbar a bit larger
+    */
+  header nav {
+    flex-basis: 60%;
+  }
+  /*
+change the header navbar borders to a circular border
+    */
+  nav ul {
+    border-radius: 2rem;
+  }
+}
