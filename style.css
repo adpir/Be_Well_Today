@@ -7,6 +7,7 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+  /* outline: none; */
 }
 body {
   font-family: 'Roboto Slab', serif;
@@ -14,16 +15,46 @@ body {
   padding: 0;
 }
 
-h1 {
+.heading-primary-sub {
   text-align: center;
+
+  justify-content: space-between;
   color: rgba(6, 37, 25, 0.703);
   position: absolute;
   top: 40%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-60%, -60%);
   display: block;
-  font-size: 40px;
+  font-size: 4.5em;
+  transition: transform 4.5s ease;
 }
+.heading-primary-main {
+  color: rgb(224, 111, 12);
+  position: absolute;
+  font-size: 50px;
+  text-align: center;
+  justify-content: space-between;
+  top: 34%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-flow: row wrap;
+}
+.heading-primary-subOne {
+  color: rgb(224, 111, 12);
+  position: absolute;
+  font-size: 45px;
+  text-align: center;
+  justify-content: space-between;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-flow: row wrap;
+}
+/* .hidden {
+  display: none;
+} */
 /* screen reader . this will be hidden unless the user is using a screen reader. if they are not using one the user will see a hamberger button 
 for my own reference if the position is relative the 'open main menu and the close main menu is visible but if I change it to absolute it will be hidden */
 .sr-only {
@@ -56,20 +87,29 @@ header {
   /* add image opacity border-radius: 50%; */
 }
 
-/* this section give more width to the hamberger and the close button image */
+/* this section give more width to the hamberger and the close button image
+adding extra info move the icons to the top */
 .hamburger img,
 .close img {
   width: 36px;
   height: 36px;
-}
-.hamburger {
   position: absolute;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   top: 0;
   right: 0;
+  margin: 1rem;
 }
+/* .hamburger {
+  position: absolute;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  top: 0;
+  right: 0;
+} */
+
 nav {
   /*
 using padding : move the image and list menu to down a bit. 
@@ -87,13 +127,13 @@ using padding : move the image and list menu to down a bit.
   /* adding the 100vh vh stands for viewport it will make sure to cover the screen to black for the close screen  */
   height: 100vh;
   overflow: hidden;
-  background-color: rgba(57, 139, 79, 0.9);
+  background-color: rgb(0, 34, 18);
   display: flex;
   justify-content: space-between;
   text-align: center;
   /* animate slide up/down */
   transform: translateY(-100%);
-  transition: transform 0.2s ease;
+  transition: transform 1s ease;
 }
 /* :target is called when its anchor id #navbar is called by clicking on the hamburger which has href="#navbar" => this make the hamburger and close to work. */
 nav:target {
@@ -103,7 +143,7 @@ nav ul {
   /*
   move the ul list that is inside of the navbar to the center;
     */
-  flex-basis: 80%;
+  flex-basis: 90%;
   /*
   list-style-type: none; remove the bullets
     */
@@ -114,11 +154,12 @@ nav a {
   padding: 1rem; provided some space between the list
     */
   display: block;
-  padding: 1rem;
+  padding: 60px 0px 0 0px;
+  margin: 0 0 4px 2px;
   /*
   font-size: 1.5rem; provided a bigger size to the letters
     */
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   /*
   font-weight: 600; provided a bolder look to the letters
     */
@@ -130,56 +171,85 @@ nav a {
   /*
  color: white; change color to white to the letters
     */
-  color: white;
+  color: beige;
+  /* animate slide up/down */
 }
+
 nav a:hover {
   /*
  using hover change the color to pink to the letters
     */
-  color: #ff7700;
+  color: #c07214;
 }
+
 /*
 some styling to make some effect to the navbar and to make it tilt a bit in the corner
 */
 
 /* add media queries to desktop since it was made mobile responsive first - using logo it change the size to the pic when it reach to  min-width: 600px*/
-@media (min-width: 600px) {
+@media (min-width: 600px 1000px) {
   .logo {
-    width: 35%;
+    /* width: 35%; */
+    width: 100%;
+    opacity: 50%;
+    height: 75;
+    clip-path: polygon(0 0, 100% 0%, 100% 64%, 0 100%, 0% 50%);
   }
+
   nav {
-    position: static;
-    width: auto;
     /*
-this make the slide to appear in the right of the screen 
-height: auto;
-    overflow: auto;
-    transform: none;
-    */
-    height: auto;
-    overflow: auto;
-    transform: none;
-    background-color: transparent;
-    display: block;
+using padding : move the image and list menu to down a bit. 
+*/
+    padding: 1rem;
+    /* position: absolute move the content list to left where the image is located, and the right side is showing only the menu hamburger  */
+    position: absolute;
+    /* a higher z-index put navbar above hamburger */
+    z-index: 1000;
+    /* move list a bit top */
+    top: 0;
+    /* move list a bit to the left */
+    left: 0;
+    width: 100%;
+    /* adding the 100vh vh stands for viewport it will make sure to cover the screen to black for the close screen  */
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgba(57, 139, 79, 0.9);
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    /* animate slide up/down */
+    transform: translateY(-100%);
+    transition: transform 1s ease;
   }
+  nav:target {
+    transform: translateY(0);
+  }
+
   /*
 this make the hamburger and the close button to dissapear from the screen 
     */
-  .hamburger,
-  .close {
-    display: none;
+  .hamburger .close {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    top: 0;
+    right: 0;
+    margin: 1rem;
   }
-  header {
-    /*
+
+  /*
 this make margin: 2rem 0 0 0; the image move all the way to the left
     */
-    margin: 2rem 0 0 0;
-    /*
+  /* margin: 0; */
+  /*
 text was move to the center and using block it move the list to the left (the content is invisible just bullets is showing 
     */
-    text-align: center;
-    display: block;
-  }
+  /* text-align: center;
+    display: block; */
+
   nav {
     padding: 0;
     margin: 0;
@@ -194,19 +264,26 @@ remove the bullets from the list
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+
+    font-size: 2.5rem;
     /*
-margin-top: 2rem; move h1 a bit down
+  font-weight: 600; provided a bolder look to the letters
     */
-    margin-top: 2rem;
+    font-weight: 600;
     /*
- adding background-color: #f38600;
-    border-radius: 0rem; the navbar appear with the content
+  text-decoration: none; remove the underline to the letters
     */
-    background-color: #f38600;
-    border-radius: 0rem;
+    text-decoration: none;
+    /*
+ color: white; change color to white to the letters
+    */
+    color: beige;
+    display: block;
+    padding: 60px 0px 0 0px;
+    margin: 0 0 4px 2px;
   }
 }
-@media (min-width: 1000px) {
+@media (min-width: 1008px) {
   header {
     /*
 display: flex; move header navbar to the right 
@@ -216,12 +293,7 @@ display: flex; move header navbar to the right
     justify-content: space-between;
     align-items: center;
   }
-  /*
-change the logo size to smaller and bit to the top
-    */
-  .logo {
-    width: 25%;
-  }
+
   /*
 streght the header navbar a bit larger
     */
